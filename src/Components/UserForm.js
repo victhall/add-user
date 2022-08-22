@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Button from './Button'
 
 export default function UserForm() {
   const [enteredUsername, setEnteredUsername] = useState('');
@@ -26,9 +27,9 @@ export default function UserForm() {
 
 
   return (
-    <form >
+    <form onSubmit={submitHandler}>
 
-      <div onSubmit={submitHandler}>
+      <div>
 
         <div>
           <label>Username</label>
@@ -47,7 +48,7 @@ export default function UserForm() {
         </div>
 
       </div>
-      <button type="submit">Add User</button>
+      <Button type="submit">Add User</Button>
     </form>
   )
 }
