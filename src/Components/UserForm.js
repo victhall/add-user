@@ -5,7 +5,7 @@ export default function UserForm() {
   const [enteredUsername, setEnteredUsername] = useState('');
   const [enteredAge, setEnteredAge] = useState('');
 
-  const nameChangeHandler = function (event) {
+  const usernameChangeHandler = function (event) {
     setEnteredUsername(event.target.value)
   }
 
@@ -14,12 +14,24 @@ export default function UserForm() {
   }
 
   const submitHandler = function (event) {
-    ProgressEvent.preventDefault()
+    event.preventDefault()
+    
+    if (!enteredUsername.trim() || !enteredAge.trim()) {
+      return;
+    }
 
-    const userData = {
-      username: enteredUsername,
-      age: enteredAge
-    };
+    //+ changes string to number
+    if (+enteredAge < 1) {
+      return;
+    }
+
+    console.log(enteredUsername, enteredAge)
+
+
+    // const userData = {
+    //   username: enteredUsername,
+    //   age: enteredAge
+    // };
 
     setEnteredUsername('')
     setEnteredAge('')
@@ -36,7 +48,7 @@ export default function UserForm() {
           <input
             type='text'
             value={enteredUsername}
-            onChange={nameChangeHandler} />
+            onChange={usernameChangeHandler} />
         </div>
 
         <div>
