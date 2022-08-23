@@ -3,12 +3,24 @@ import UserForm from './Components/UserForm'
 import UserList from "./Components/UserList";
 
 function App() {
-  // const [users, setUser] = useState([]);
+  const [userList, setUserList] = useState([]);
+
+  const addUserHandler = function (userName, userAge) {
+    setUserList((prevUserList) => {
+      return [...prevUserList,
+      {
+        username: userName,
+        age: userAge,
+        id: Math.random.toString()
+      }]
+    })
+  }
 
 
   return (
     <>
-      <UserForm />
+      <UserForm onAddUser={addUserHandler} />
+      <UserList users={userList} />
     </>
   );
 }
