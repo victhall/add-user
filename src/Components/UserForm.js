@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Button from './Button'
 import ErrorModal from './ErrorModal'
+import Wrapper from './Wrapper'
 
 export default function UserForm(props) {
   const [enteredUsername, setEnteredUsername] = useState('');
@@ -36,7 +37,7 @@ export default function UserForm(props) {
 
 
   return (
-    <>
+   <Wrapper>
       {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
       <div>
         <form onSubmit={submitHandler}>
@@ -63,6 +64,6 @@ export default function UserForm(props) {
           <Button type="submit">Add User</Button>
         </form>
       </div>
-    </>
+    </Wrapper>
   )
 }
